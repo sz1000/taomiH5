@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport"-->
+    <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="css/default.css">-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        (function () {
+            var meta = document.createElement("meta");
+            var scale = 1;
+            scale = 1 / window.devicePixelRatio;
+            meta.name = "viewport";
+            meta.content = "user-scalable=no,initial-scale=" + scale + ",minimum-scale=" + scale + ",maximum-scale=" + scale;
+            document.head.appendChild(meta);
+        })();
+    </script>
+    <script>
+        (function () {
+            var html = document.documentElement;
+            var width = html.clientWidth;
+            html.style.fontSize = width / 7.5 + "px";
+        })();
+    </script>
+    <style>
+        /*公共样式--开始*/
+        html,
+        body,
+        div,
+        ul,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        dl,
+        dt,
+        dd,
+        ol,
+        form,
+        input,
+        textarea,
+        th,
+        td,
+        select {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            font-family: "Microsoft YaHei";
+            font-size: 14px;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: normal;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        img {
+            border: none;
+            vertical-align: middle;
+        }
+
+        a {
+            text-decoration: none;
+            color: #232323;
+        }
+
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        input,
+        textarea {
+            outline: none;
+            border: none;
+        }
+
+        textarea {
+            resize: none;
+            overflow: auto;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .clearfix:after {
+            content: ".";
+            width: 0;
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
+        .box {
+            width: 100%;
+            height: 14.5rem;
+            background: url("images/4_02.png") no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .content {
+            font-size: .5rem;
+            margin: 6.74rem .3rem 0;
+            background: #fff4fb;
+            border-radius: .3rem;
+        }
+
+        .content_list {
+            padding-top: .5rem;
+        }
+
+        .list {
+            width: 6.4rem;
+            overflow: hidden;
+            margin-left: 1rem;
+        }
+
+        .left {
+            float: left;
+            margin-left: .4rem;
+            color: #ffc2d1;
+            font-size: 0.4rem;
+            line-height: .64rem;
+        }
+
+        .right {
+            float: left;
+            margin-left: .1rem;
+            font-size: .3rem;
+            line-height: .64rem;
+            color: #ff8fa5;
+        }
+
+        .list > li {
+            float: left;
+            margin-right: .2rem;
+        }
+
+        .label {
+            float: left;
+            font-size: .3rem;
+            line-height: .64rem;
+            color: #ff8fa5;
+            height: .64rem;
+            display: inline-block;
+        }
+
+        .label > input {
+            margin-right: .01rem;
+        }
+
+        .checked {
+            width: .26rem;
+            height: .26rem;
+            border: .01rem solid #ffa9bc;
+        }
+
+        input[type="checkbox"] {
+            width: .26rem;
+            height: .26rem;
+            margin-right: .2rem;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            line-height: .32rem;
+            position: relative;
+        }
+
+        input[type="checkbox"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            border: .01rem solid #e50232
+        }
+
+        input[type="checkbox"]:checked::before {
+            content: "\2713";
+            background: url("images/4_03.png") no-repeat .26rem .26rem #ff6282;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border: .01rem solid #e50232;
+            color: #fff;
+            font-size: .26rem;
+            font-weight: bold;
+        }
+
+        input[type="radio"] {
+            width: .26rem;
+            height: .26rem;
+            margin-right: .2rem;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            line-height: .32rem;
+            position: relative;
+        }
+
+        input[type="radio"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            border: .01rem solid #e50232
+        }
+
+        input[type="radio"]:checked::before {
+            content: "\2713";
+            background: url("images/4_03.png") no-repeat .26rem .26rem #ff6282;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border: .01rem solid #e50232;
+            color: #fff;
+            font-size: .26rem;
+            font-weight: bold;
+        }
+
+        .sex {
+            float: left;
+        }
+
+        .sex > label {
+            margin-right: .2rem;
+        }
+
+        .phone {
+            width: 5rem;
+            font-size: .3rem;
+            background: #ffe2ec;
+            color: #ffa9bc;
+            margin-left: 1.14rem;
+            line-height: .64rem;
+            text-indent: .2rem;
+            border-radius: .1rem;
+        }
+
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #ffa9bc;
+        }
+
+        ::-moz-placeholder { /* Firefox 19+ */
+            color: #ffa9bc;
+        }
+
+        :-ms-input-placeholder { /* IE 10+ */
+            color: #ffa9bc;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            color: #ffa9bc;
+        }
+
+        .name {
+            float: left;
+            width: 1.2rem;
+            height: .64rem;
+            color: #ff8fa5;
+            line-height: .64rem;
+            font-size: .26rem;
+            background: #ffe2ec;
+            margin: 0 .2rem;
+            text-align: center;
+            border-radius: .1rem;
+        }
+
+        .footer {
+            width: 100%;
+            padding: .5rem 0 .26rem;
+        }
+
+        .footer .btn {
+        	display:block;
+            width: 5.78rem;
+            background: #ff6282;
+            text-align: center;
+            margin: 0 auto;
+            height: .52rem;
+            line-height: .52rem;
+            font-size: .26rem;
+            color: #fff;
+            border-radius: .3rem;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <div class="content">
+        <div class="clearfix content_list">
+            <span class="left">01</span>
+            <p class="right">你感兴趣的项目是？</p>
+            <ul class="list">
+                <li class="li">
+                    <label for="eyes" class="label"><input id="eyes" class="checked" type="checkbox" name="checkbox"
+                                                           value="眼部整形">眼部整形</label>
+                </li>
+                <li>
+                    <label for="pars" class="label"><input id="pars" class="checked" type="checkbox" name="checkbox"
+                                                           value="鼻部整形">鼻部整形</label>
+                </li>
+                <li>
+                    <label for="fat" class="label"><input id="fat" class="checked" type="checkbox" name="checkbox"
+                                                          value="脂肪填充">脂肪填充</label>
+                </li>
+                <li>
+                    <label for="face" class="label"><input id="face" class="checked" type="checkbox" name="checkbox"
+                                                           value="脸部吸脂">脸部吸脂</label>
+                </li>
+                <li>
+                    <label for="hair" class="label"><input id="hair" class="checked" type="checkbox" name="checkbox"
+                                                           value="毛发种植">毛发种植</label>
+                </li>
+                <li>
+                    <label for="oral" class="label"><input id="oral" class="checked" type="checkbox" name="checkbox"
+                                                           value="口腔美容">口腔美容</label>
+                </li>
+                <li>
+                    <label for="changeFeature" class="label"><input id="changeFeature" class="checked" type="checkbox"
+                                                                    name="checkbox" value="改脸型">改脸型</label>
+                </li>
+                <li>
+                    <label for="skin" class="label"><input id="skin" class="checked" type="checkbox" name="checkbox"
+                                                           value="皮肤祛斑嫩肤">皮肤祛斑嫩肤</label>
+                </li>
+                <li>
+                    <label for="other" class="label"><input id="other" class="checked" type="checkbox" name="checkbox"
+                                                            value="其它">其它</label>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix content_list">
+            <span class="left">02</span>
+            <p class="right">填写手机号码</p>
+            <div>
+                <input type="text" class="phone" placeholder="请输入手机号码">
+            </div>
+        </div>
+        <div class="clearfix content_list">
+            <span class="left">03</span>
+            <p class="right">姓氏</p>
+            <div class="sex">
+                <input type="text" class="name" placeholder="请填写">
+                <label for="lady" class="label"><input id="lady" type="radio" name="sex" value="0">女士</label>
+                <label for="man" class="label"><input id="man" type="radio" name="sex" value="1">男士</label>
+            </div>
+        </div>
+        <footer class="footer">
+            <button class="btn">提交</button>
+        </footer>
+    </div>
+
+</div>
+</body>
+<script>
+    var $btn = $(".btn");
+    $btn.on('click', function () {
+        var re = /^1\d{10}$/g;
+        if (!re.test($(".phone").val())) {
+            $(".phone").val("")
+            alert('手机号码格式不正确');
+            return;
+        }
+        var arr = new Array();
+        //循环所有选中的值
+        $('input[name="checkbox"]:checked').each(function (index, el) {
+            //追加到数组中
+            arr.push($(this).val());
+        });
+        //将数组元素连接起来转化为字符串
+        var arrStr = arr.join(',');
+        //输出到控制台
+        //console.log("选中值："+ arrStr);
+
+        var data = {
+            name: $(".name").val(),
+            sex: $(".label input[type='radio']:checked").val(),
+            categories_name: arrStr ? arrStr : '',
+            mobile: $(".phone").val()
+        }
+        $btn.attr('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: 'https://user.meilimei.com/api/custom_new',
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            // headers: {
+            //     "token": ''
+            // },
+            contentType: false,
+            processData: false,
+            data: JSON.stringify(data),
+            success: function (res) {
+                $btn.removeAttr('disabled')
+            },
+            error: function (err) {
+            }
+        })
+    })
+
+</script>
+
+</html>
